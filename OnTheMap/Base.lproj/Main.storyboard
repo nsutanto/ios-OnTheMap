@@ -32,7 +32,7 @@
         <!--LoginViewController-->
         <scene sceneID="Pbo-4l-mh3">
             <objects>
-                <viewController title="LoginViewController" id="y0B-1a-K3g" sceneMemberID="viewController">
+                <viewController title="LoginViewController" id="y0B-1a-K3g" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="48e-B0-INl"/>
                         <viewControllerLayoutGuide type="bottom" id="P1I-dE-zbf"/>
@@ -53,7 +53,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfS-p0-tiB">
                                 <rect key="frame" x="24" y="356" width="327" height="30"/>
@@ -61,6 +61,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="performLogin:" destination="y0B-1a-K3g" eventType="touchUpInside" id="mK3-e8-tEi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="odg-hC-Vmz">
                                 <rect key="frame" x="16" y="251" width="343" height="21"/>
@@ -94,15 +97,19 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Feg-fq-81x" secondAttribute="trailing" constant="8" id="zR7-X9-USz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="Feg-fq-81x" id="HCt-Oe-AYe"/>
+                        <outlet property="passwordTextField" destination="1sZ-iQ-0i0" id="CXA-7P-Tpn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufM-aS-Lev" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1303.2" y="201.94902548725639"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab View Controller-->
         <scene sceneID="Ph8-P1-usp">
             <objects>
-                <tabBarController id="Wlw-ca-Gnn" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabViewController" title="Main Tab View Controller" id="Wlw-ca-Gnn" customClass="MainTabViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DPL-Ag-XYp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
