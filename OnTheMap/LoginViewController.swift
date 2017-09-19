@@ -15,39 +15,70 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = OnTheMapTextFieldDelegate.sharedInstance
+        passwordTextField.delegate = OnTheMapTextFieldDelegate.sharedInstance
     }
     
     private func completeLogin() {
         performUIUpdatesOnMain {
-            //self.debugTextLabel.text = ""
-            //self.setUIEnabled(true)
-            let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainTabViewController") as! UITabBarController
+            let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             self.present(controller, animated: true, completion: nil)
         }
     }
     
+    private func performAlert(_ messageString: String) {
+        performUIUpdatesOnMain {
+            // Login fail
+            let alert = UIAlertController(title: "Alert", message: messageString, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        }
+    }
+    
+    private func getCurrentUserInfo() {
+        
+               
+        ParseClient.sharedInstance().getStudentInformation(completionHandlerLocation: {(studentInfo, error) in
+            
+            if (error != nil) {
+                self.performAlert("Fail to get user info")
+            }
+        })
+    }
 
     @IBAction func performLogin(_ sender: Any) {
+        if (emailTextField.text! == "" || passwordTextField.text! == "") {
+            let alert = UIAlertController(title: "Alert", message: "Please enter email and password.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let email = emailTextField.text!
         let password = passwordTextField.text!
         
-        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = "{\"udacity\": {\"username\": \"\(email)\", \"password\": \"\(password)\"}}".data(using: String.Encoding.utf8)
-        let session = URLSession.shared
-        let task = session.dataTask(with: request as URLRequest) { data, response, error in
-            if error != nil { // Handle error…
-                return
-            }
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
-            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+        UdacityClient.sharedInstance().performUdacityLogin(email, password, completionHandlerLogin: { (error) in
             
-            self.completeLogin()
-        }
-        task.resume()
+            if (error == nil) {
+                
+                // Get User Info
+                self.getCurrentUserInfo()
+            
+                // Complete Login
+                self.completeLogin()
+            }
+            else {
+                self.performAlert("Invalid login or password")
+            }
+        })
     }
-
+    
+    @IBAction func performSignUp(_ sender: Any) {
+        let app = UIApplication.shared
+        app.open(URL(string: "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated")!, options: [:])
+        
+    }
+    
 }

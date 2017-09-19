@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B68A6CE1F6B452C0092828C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68A6CD1F6B452C0092828C /* TableViewController.swift */; };
+		6B68A6D01F6B88080092828C /* UpdateURLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B68A6CF1F6B88080092828C /* UpdateURLViewController.swift */; };
 		6B990CB91F64E72C00FA5194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CB81F64E72C00FA5194 /* AppDelegate.swift */; };
-		6B990CBB1F64E72C00FA5194 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CBA1F64E72C00FA5194 /* ViewController.swift */; };
+		6B990CBB1F64E72C00FA5194 /* UpdateLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CBA1F64E72C00FA5194 /* UpdateLocationViewController.swift */; };
 		6B990CBE1F64E72C00FA5194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B990CBC1F64E72C00FA5194 /* Main.storyboard */; };
 		6B990CC11F64E72C00FA5194 /* OnTheMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CBF1F64E72C00FA5194 /* OnTheMap.xcdatamodeld */; };
 		6B990CC31F64E72C00FA5194 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B990CC21F64E72C00FA5194 /* Assets.xcassets */; };
@@ -16,12 +18,21 @@
 		6B990CD01F658AF700FA5194 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CCF1F658AF700FA5194 /* LoginViewController.swift */; };
 		6B990CD31F65C80200FA5194 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CD21F65C80200FA5194 /* GCDBlackBox.swift */; };
 		6B990CD51F65C90A00FA5194 /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CD41F65C90A00FA5194 /* MainTabViewController.swift */; };
+		6B990CD71F65DF9700FA5194 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CD61F65DF9700FA5194 /* MapViewController.swift */; };
+		6B990CDC1F66036F00FA5194 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CDB1F66036F00FA5194 /* UdacityClient.swift */; };
+		6B990CDE1F6618AA00FA5194 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CDD1F6618A900FA5194 /* UdacityConstants.swift */; };
+		6B990CE01F673FE300FA5194 /* ParseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CDF1F673FE300FA5194 /* ParseClient.swift */; };
+		6B990CE21F673FF600FA5194 /* ParseConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CE11F673FF600FA5194 /* ParseConstants.swift */; };
+		6B990CE41F68C58C00FA5194 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B990CE31F68C58C00FA5194 /* StudentInformation.swift */; };
+		6BA1E0531F709C9700924D32 /* OnTheMapTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1E0521F709C9700924D32 /* OnTheMapTextViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6B68A6CD1F6B452C0092828C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		6B68A6CF1F6B88080092828C /* UpdateURLViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateURLViewController.swift; sourceTree = "<group>"; };
 		6B990CB51F64E72C00FA5194 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B990CB81F64E72C00FA5194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6B990CBA1F64E72C00FA5194 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B990CBA1F64E72C00FA5194 /* UpdateLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationViewController.swift; sourceTree = "<group>"; };
 		6B990CBD1F64E72C00FA5194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B990CC01F64E72C00FA5194 /* OnTheMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnTheMap.xcdatamodel; sourceTree = "<group>"; };
 		6B990CC21F64E72C00FA5194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +41,13 @@
 		6B990CCF1F658AF700FA5194 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6B990CD21F65C80200FA5194 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		6B990CD41F65C90A00FA5194 /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		6B990CD61F65DF9700FA5194 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6B990CDB1F66036F00FA5194 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		6B990CDD1F6618A900FA5194 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		6B990CDF1F673FE300FA5194 /* ParseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseClient.swift; sourceTree = "<group>"; };
+		6B990CE11F673FF600FA5194 /* ParseConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConstants.swift; sourceTree = "<group>"; };
+		6B990CE31F68C58C00FA5194 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		6BA1E0521F709C9700924D32 /* OnTheMapTextViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapTextViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +84,6 @@
 				6B990CCE1F658AC100FA5194 /* Model */,
 				6B990CCD1F658AB500FA5194 /* ViewController */,
 				6B990CB81F64E72C00FA5194 /* AppDelegate.swift */,
-				6B990CBA1F64E72C00FA5194 /* ViewController.swift */,
 				6B990CBC1F64E72C00FA5194 /* Main.storyboard */,
 				6B990CC21F64E72C00FA5194 /* Assets.xcassets */,
 				6B990CC41F64E72C00FA5194 /* LaunchScreen.storyboard */,
@@ -81,6 +98,10 @@
 			children = (
 				6B990CCF1F658AF700FA5194 /* LoginViewController.swift */,
 				6B990CD41F65C90A00FA5194 /* MainTabViewController.swift */,
+				6B990CD61F65DF9700FA5194 /* MapViewController.swift */,
+				6B68A6CD1F6B452C0092828C /* TableViewController.swift */,
+				6B990CBA1F64E72C00FA5194 /* UpdateLocationViewController.swift */,
+				6B68A6CF1F6B88080092828C /* UpdateURLViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -88,6 +109,8 @@
 		6B990CCE1F658AC100FA5194 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B990CE31F68C58C00FA5194 /* StudentInformation.swift */,
+				6B990CD81F65E5A800FA5194 /* Clients */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -96,8 +119,36 @@
 			isa = PBXGroup;
 			children = (
 				6B990CD21F65C80200FA5194 /* GCDBlackBox.swift */,
+				6BA1E0521F709C9700924D32 /* OnTheMapTextViewDelegate.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		6B990CD81F65E5A800FA5194 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				6B990CDA1F65E5BA00FA5194 /* ParseClient */,
+				6B990CD91F65E5B200FA5194 /* UdacityClient */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		6B990CD91F65E5B200FA5194 /* UdacityClient */ = {
+			isa = PBXGroup;
+			children = (
+				6B990CDB1F66036F00FA5194 /* UdacityClient.swift */,
+				6B990CDD1F6618A900FA5194 /* UdacityConstants.swift */,
+			);
+			name = UdacityClient;
+			sourceTree = "<group>";
+		};
+		6B990CDA1F65E5BA00FA5194 /* ParseClient */ = {
+			isa = PBXGroup;
+			children = (
+				6B990CDF1F673FE300FA5194 /* ParseClient.swift */,
+				6B990CE11F673FF600FA5194 /* ParseConstants.swift */,
+			);
+			name = ParseClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,12 +224,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B990CE41F68C58C00FA5194 /* StudentInformation.swift in Sources */,
+				6B990CDC1F66036F00FA5194 /* UdacityClient.swift in Sources */,
+				6B68A6CE1F6B452C0092828C /* TableViewController.swift in Sources */,
+				6B68A6D01F6B88080092828C /* UpdateURLViewController.swift in Sources */,
 				6B990CD01F658AF700FA5194 /* LoginViewController.swift in Sources */,
+				6B990CE21F673FF600FA5194 /* ParseConstants.swift in Sources */,
 				6B990CC11F64E72C00FA5194 /* OnTheMap.xcdatamodeld in Sources */,
-				6B990CBB1F64E72C00FA5194 /* ViewController.swift in Sources */,
+				6BA1E0531F709C9700924D32 /* OnTheMapTextViewDelegate.swift in Sources */,
+				6B990CBB1F64E72C00FA5194 /* UpdateLocationViewController.swift in Sources */,
 				6B990CB91F64E72C00FA5194 /* AppDelegate.swift in Sources */,
+				6B990CDE1F6618AA00FA5194 /* UdacityConstants.swift in Sources */,
+				6B990CE01F673FE300FA5194 /* ParseClient.swift in Sources */,
 				6B990CD31F65C80200FA5194 /* GCDBlackBox.swift in Sources */,
 				6B990CD51F65C90A00FA5194 /* MainTabViewController.swift in Sources */,
+				6B990CD71F65DF9700FA5194 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
