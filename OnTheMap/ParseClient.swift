@@ -32,7 +32,7 @@ class ParseClient : NSObject {
         }
         return Singleton.sharedInstance
     }
-    
+
     
     // GET Student Locations
     func getStudentInformations(parameters: [String: AnyObject], completionHandlerLocations: @escaping (_ result: [StudentInformation]?, _ error: NSError?)
@@ -73,14 +73,12 @@ class ParseClient : NSObject {
         let uniqueKeyStr = "{\"uniqueKey\":\"" + accountKey! + "\"}"
         let customAllowedSet =  CharacterSet(charactersIn:":=\"#%/<>?@\\^`{|}").inverted
         let accountKeyEscapedString = uniqueKeyStr.addingPercentEncoding(withAllowedCharacters: customAllowedSet)
-        let parameters = [
-            "where": accountKeyEscapedString as AnyObject
-        ]
+        let parameters = [OneStudentParameterKeys.Where: accountKeyEscapedString as AnyObject]
         
         /* 1. Specify parameters, method (if has {key}), and HTTP body (if POST) */
         //let request = NSMutableURLRequest(url: parseURLFromParameters(parameters, withPathExtension: Methods.StudentLocation))
         // TODO : Let's do manual parameters for now since it will re-convert escape string
-        let uniqueKey = parameters["where"] as? String
+        let uniqueKey = parameters[OneStudentParameterKeys.Where] as? String
         let request = NSMutableURLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation?where=" + uniqueKey!)!)
         //print(request.url!.absoluteString)
     
@@ -225,7 +223,7 @@ class ParseClient : NSObject {
                     return
                 }
                 
-                //print(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
+                print(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
                 
                 self.convertDataWithCompletionHandler(data, completionHandlerConvertData: completionHandlerRequest)
             }

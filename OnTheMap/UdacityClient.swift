@@ -143,6 +143,69 @@ class UdacityClient : NSObject {
         }
     }
     
+    // Udacity Login
+    func performFacebookLogin(_ fbAccessToken: String,
+                             completionHandlerFBLogin: @escaping (_ error: NSError?)
+        -> Void) {
+        
+        let request = NSMutableURLRequest(url: URL(string: Constants.AuthorizationURL)!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpBody = "{\"facebook_mobile\": {\"access_token\": \"\(fbAccessToken)\"}}".data(using: String.Encoding.utf8)
+        let _ = performRequest(request: request) { (parsedResult, error) in
+            
+            /* Send the desired value(s) to completion handler */
+            if let error = error {
+                completionHandlerFBLogin(error)
+            } else {
+                /* GUARD: Is the "account" key in our result? */
+                guard let accountDictionary = parsedResult?[UdacityClient.UdacityAccountKeys.Account] as? [String:AnyObject] else {
+                    return
+                }
+                
+                /* GUARD: Is the "account registered" key in our result? */
+                guard let registered = accountDictionary[UdacityClient.UdacityAccountKeys.Registered] as? Bool else {
+                    return
+                }
+                
+                /* GUARD: Is the "account key" key in our result? */
+                guard let accountKey = accountDictionary[UdacityClient.UdacityAccountKeys.Key] as? String else {
+                    return
+                }
+                
+                /* GUARD: Is the "session" key in our result? */
+                guard let sessionDictionary = parsedResult?[UdacityClient.SessionKeys.Session] as? [String:AnyObject] else {
+                    return
+                }
+                
+                /* GUARD: Is the "session id" key in our result? */
+                guard let sessionID = sessionDictionary[UdacityClient.SessionKeys.ID] as? String else {
+                    return
+                }
+                
+                // Check if account is registered. If it is, then it it means we can login
+                if registered {
+                    self.AccountKey = accountKey
+                    self.SessionID = sessionID
+                    
+                    completionHandlerFBLogin(nil)
+                    
+                }
+                else {
+                    
+                    // Account is not registered
+                    let errorMsg = "Account is not registered"
+                    let userInfo = [NSLocalizedDescriptionKey : errorMsg]
+                    completionHandlerFBLogin(NSError(domain: errorMsg, code: 2, userInfo: userInfo))
+                    
+                }
+            }
+        }
+    }
+
+    
     private func performRequest(request: NSMutableURLRequest,
                         completionHandlerRequest: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void)
                         -> URLSessionDataTask {

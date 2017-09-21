@@ -11,7 +11,7 @@ import UIKit
 
 class OnTheMapTextFieldDelegate : NSObject, UITextFieldDelegate {
     
-    static let sharedInstance : OnTheMapTextFieldDelegate = OnTheMapTextFieldDelegate();
+    static let sharedInstance : OnTheMapTextFieldDelegate = OnTheMapTextFieldDelegate()
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

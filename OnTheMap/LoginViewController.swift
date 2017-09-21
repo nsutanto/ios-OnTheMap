@@ -7,14 +7,38 @@
 //
 
 import UIKit
+import FBSDKLoginKit
+
+extension LoginViewController: FBSDKLoginButtonDelegate {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("Did log out of facebook")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            performAlert("Fail to login using facebook")
+            return
+        }
+        
+        self.performFBLogin(result.token.tokenString)
+    }
+}
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // FB Login example : https://www.letsbuildthatapp.com/course_video?id=412
+        let fbLoginButton = FBSDKLoginButton()
+        
+        loginStackView.addArrangedSubview(fbLoginButton)
+        
+        fbLoginButton.delegate = self
         
         emailTextField.delegate = OnTheMapTextFieldDelegate.sharedInstance
         passwordTextField.delegate = OnTheMapTextFieldDelegate.sharedInstance
@@ -27,7 +51,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func performAlert(_ messageString: String) {
+    func performAlert(_ messageString: String) {
         performUIUpdatesOnMain {
             // Login fail
             let alert = UIAlertController(title: "Alert", message: messageString, preferredStyle: UIAlertControllerStyle.alert)
@@ -39,11 +63,27 @@ class LoginViewController: UIViewController {
     
     private func getCurrentUserInfo() {
         
-               
         ParseClient.sharedInstance().getStudentInformation(completionHandlerLocation: {(studentInfo, error) in
             
             if (error != nil) {
                 self.performAlert("Fail to get user info")
+            }
+        })
+    }
+    
+    func performFBLogin(_ fbToken: String) {
+        UdacityClient.sharedInstance().performFacebookLogin(fbToken, completionHandlerFBLogin: { (error) in
+            
+            if (error == nil) {
+                
+                // Get User Info
+                self.getCurrentUserInfo()
+                
+                // Complete Login
+                self.completeLogin()
+            }
+            else {
+                self.performAlert("Invalid login or password")
             }
         })
     }

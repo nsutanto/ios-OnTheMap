@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class MainTabViewController: UITabBarController {
 
@@ -21,7 +22,6 @@ class MainTabViewController: UITabBarController {
         
         UdacityClient.sharedInstance().performUdacityLogout(completionHandlerLogout: { (error) in
             self.updateUIAfterLogout(error: error)
-            
         })
     }
     
@@ -52,7 +52,11 @@ class MainTabViewController: UITabBarController {
     }
     
     private func updateUIAfterLogout(error: NSError?) {
+        
         performUIUpdatesOnMain {
+     
+            let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+            fbLoginManager.logOut()
             self.dismiss(animated: true, completion: nil)
         }
     }
