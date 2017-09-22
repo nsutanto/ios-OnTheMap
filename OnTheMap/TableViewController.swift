@@ -50,8 +50,20 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let studentInformation = studentInformationsLocal[(indexPath as NSIndexPath).row]
-        let app = UIApplication.shared
-        app.open(URL(string: studentInformation.MediaURL )!, options: [:])
+        if (studentInformation.MediaURL != "") {
+            let app = UIApplication.shared
+            app.open(URL(string: studentInformation.MediaURL)!, options: [:], completionHandler: { (isSuccess) in
+                
+                if (isSuccess == false) {
+                    self.performAlert()
+                }
+            })
+        }
+        else {
+            let alert = UIAlertController(title: "Alert", message: "Link URL is not valid", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,5 +78,13 @@ class TableViewController: UITableViewController {
         cell.detailTextLabel!.text = studentInformation.MediaURL
         
         return cell
+    }
+    
+    func performAlert() {
+        performUIUpdatesOnMain {
+            let alert = UIAlertController(title: "Alert", message: "Link URL is not valid. It might missing http or https.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

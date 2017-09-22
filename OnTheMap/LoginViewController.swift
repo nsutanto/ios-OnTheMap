@@ -44,6 +44,17 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = OnTheMapTextFieldDelegate.sharedInstance
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+
+    
     private func completeLogin() {
         performUIUpdatesOnMain {
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
@@ -120,5 +131,44 @@ class LoginViewController: UIViewController {
         app.open(URL(string: "https://auth.udacity.com/sign-up?next=https%3A%2F%2Fclassroom.udacity.com%2Fauthenticated")!, options: [:])
         
     }
+    
+    // MARK Keyboard routines
+    func keyboardWillShow(_ notification:Notification) {
+        if emailTextField.isFirstResponder {
+            view.frame.origin.y = 0 - getKeyboardHeight(notification) + 100
+        }
+        
+        if passwordTextField.isFirstResponder {
+            view.frame.origin.y = 0 - getKeyboardHeight(notification) + 100
+        }
+    }
+    
+    func keyboardWillHide(_ notification:Notification) {
+        if emailTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+        
+        if passwordTextField.isFirstResponder {
+            view.frame.origin.y = 0
+        }
+
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+    }
+
     
 }

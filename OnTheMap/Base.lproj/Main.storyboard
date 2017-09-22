@@ -135,11 +135,8 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="467"/>
                             </mapView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a link to share here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rR3-6T-bzx">
-                                <rect key="frame" x="12.5" y="72" width="350" height="30"/>
+                                <rect key="frame" x="32" y="72" width="311" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="4x0-7h-F1F"/>
-                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL"/>
@@ -159,7 +156,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.50963816200000001" green="0.72336632010000002" blue="0.56253358050000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rR3-6T-bzx" firstAttribute="leading" secondItem="XtZ-4u-kQa" secondAttribute="leadingMargin" constant="16" id="5Oj-Nv-YBD"/>
                             <constraint firstItem="90N-4n-jNC" firstAttribute="top" secondItem="hz7-Jt-myT" secondAttribute="bottom" constant="8" id="8t2-pg-s3k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rR3-6T-bzx" secondAttribute="trailing" constant="16" id="8yH-XG-bb0"/>
                             <constraint firstItem="rR3-6T-bzx" firstAttribute="centerX" secondItem="XtZ-4u-kQa" secondAttribute="centerX" id="Pjf-ti-Nqc"/>
                             <constraint firstItem="hz7-Jt-myT" firstAttribute="centerX" secondItem="XtZ-4u-kQa" secondAttribute="centerX" id="SLj-fb-hpt"/>
                             <constraint firstItem="NRw-bt-N43" firstAttribute="bottom" secondItem="hz7-Jt-myT" secondAttribute="top" constant="-8" id="Z8r-VJ-Njq"/>

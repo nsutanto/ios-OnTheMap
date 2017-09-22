@@ -97,12 +97,8 @@ class ParseClient : NSObject {
                     
                     let studentInformations = StudentInformation.StudentInformationsFromResults(results)
                     
-                    if (studentInformations.count == 1) {
-                        self.studentInfo = studentInformations[0]
-                    }
-                    else {
-                        completionHandlerLocation(nil, NSError(domain: "getStudentInformation parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Number of user is not 1"]))
-                    }
+                    // Get the first student info.. We care only about unique key anyway
+                    self.studentInfo = studentInformations[0]
                     
                     completionHandlerLocation(self.studentInfo, nil)
                 } else {
@@ -145,7 +141,7 @@ class ParseClient : NSObject {
                     return
                 }
 
-                if objectID == studentInformation.ObjectID && createdAt != "" {
+                if (objectID != "" && createdAt != "") {
                     completionHandlerPostLocation(nil)
                 } else {
                     completionHandlerPostLocation(NSError(domain: "postStudentLocations parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse POST Student Location"]))

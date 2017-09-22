@@ -36,8 +36,13 @@ extension MapViewController: MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:])
-            }
+                app.open(URL(string: toOpen)!, options: [:], completionHandler: { (isSuccess) in
+              
+                    if (isSuccess == false) {
+                        self.performAlert()
+                    }
+                }
+            )}
         }
     }
 }
@@ -50,14 +55,10 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         mapView.delegate = self
         GetStudentInformations("-updatedAt")
+
     }
-    
     
     func GetStudentInformations(_ updateAtString: String) {
         
@@ -128,6 +129,14 @@ class MapViewController: UIViewController {
             
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
+        }
+    }
+    
+    func performAlert() {
+        performUIUpdatesOnMain {
+            let alert = UIAlertController(title: "Alert", message: "Link URL is not valid. It might missing http or https.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
