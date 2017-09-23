@@ -23,6 +23,7 @@ class ParseClient : NSObject {
     var session = URLSession.shared
     
     var studentInfo : StudentInformation?
+    var studentInformations: [StudentInformation]?
     
     // MARK: Shared Instance
     
@@ -54,8 +55,8 @@ class ParseClient : NSObject {
                 
                 if let results = parsedResult?[GetStudentJSONResponseKeys.StudentResult] as? [[String:AnyObject]] {
                     
-                    let studentInformations = StudentInformation.StudentInformationsFromResults(results)
-                    completionHandlerLocations(studentInformations, nil)
+                    self.studentInformations = StudentInformation.StudentInformationsFromResults(results)
+                    completionHandlerLocations(self.studentInformations, nil)
                 } else {
                     completionHandlerLocations(nil, NSError(domain: "getStudentLocations parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))
                 }
@@ -209,7 +210,8 @@ class ParseClient : NSObject {
                 
                 /* GUARD: Did we get a successful 2XX response? */
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                    sendError("Your request returned a status code other than 2xx!")
+                    let httpError = (response as? HTTPURLResponse)?.statusCode
+                    sendError("Your request returned a status code : \(String(describing: httpError))")
                     return
                 }
                 

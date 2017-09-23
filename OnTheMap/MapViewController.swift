@@ -45,22 +45,29 @@ extension MapViewController: MKMapViewDelegate {
             )}
         }
     }
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+         self.loadingIndicator.stopAnimating()
+    }
 }
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-    
-    var studentInformationsLocal = [StudentInformation]()
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
-        GetStudentInformations("-updatedAt")
-
     }
     
-    func GetStudentInformations(_ updateAtString: String) {
+    override func viewWillAppear(_ animated: Bool) {
+        getStudentInformations("-updatedAt")
+    }
+    
+    func getStudentInformations(_ updateAtString: String) {
+        
+        loadingIndicator.startAnimating()
         
         let parameters = [
             ParseClient.MultipleStudentParameterKeys.Limit: "100",
@@ -69,7 +76,6 @@ class MapViewController: UIViewController {
 
         ParseClient.sharedInstance().getStudentInformations(parameters: parameters as [String : AnyObject], completionHandlerLocations: { (studentInformations, error) in
             if let studentInformations = studentInformations{
-                self.studentInformationsLocal = studentInformations
                 self.updateUIMapAnnotation(location: studentInformations)
             } else {
                 print(error ?? "empty error")
@@ -126,7 +132,6 @@ class MapViewController: UIViewController {
         }
             
         performUIUpdatesOnMain {
-            
             // When the array is complete, we add the annotations to the map.
             self.mapView.addAnnotations(annotations)
         }

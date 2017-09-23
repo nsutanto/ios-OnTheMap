@@ -13,9 +13,6 @@ class MainTabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Get current user information
-        
     }
     
     @IBAction func performLogout(_ sender: Any) {
@@ -28,26 +25,17 @@ class MainTabViewController: UITabBarController {
     @IBAction func performRefresh(_ sender: Any) {
         if (selectedIndex == 0) {
             let vc = selectedViewController as! MapViewController
-            vc.GetStudentInformations("updatedAt")
+            vc.getStudentInformations("updatedAt")
         }
         else {
             let vc = selectedViewController as! TableViewController
-            vc.GetStudentInformations()
+            vc.getStudentInformations()
         }
     }
     
     @IBAction func performAddStudent(_ sender: Any) {
     
-        var studentInformations: [StudentInformation]
-        if (selectedIndex == 0) {
-            let vc = selectedViewController as! MapViewController
-            studentInformations = vc.studentInformationsLocal
-        }
-        else {
-            let vc = selectedViewController as! TableViewController
-            studentInformations = vc.studentInformationsLocal
-        }
-        
+        let studentInformations = ParseClient.sharedInstance().studentInformations!
         addStudentInformation(studentInformations)
     }
     

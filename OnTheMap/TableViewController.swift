@@ -11,7 +11,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var studentInformationsLocal = [StudentInformation]()
+    var studentInformations = [StudentInformation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class TableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        GetStudentInformations()
+        getStudentInformations()
     }
     
     private func updateTable() {
@@ -29,15 +29,16 @@ class TableViewController: UITableViewController {
         }
     }
     
-    func GetStudentInformations() {
+    func getStudentInformations() {
         
         let parameters = [
             ParseClient.MultipleStudentParameterKeys.Limit: "100",
+            ParseClient.MultipleStudentParameterKeys.Order: "updatedAt"
         ]
         
         ParseClient.sharedInstance().getStudentInformations(parameters: parameters as [String : AnyObject], completionHandlerLocations: { (studentInformations, error) in
             if let studentInformations = studentInformations {
-                self.studentInformationsLocal = studentInformations
+                self.studentInformations = studentInformations
                 self.updateTable()
             } else {
                 print(error ?? "empty error")
@@ -49,7 +50,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let studentInformation = studentInformationsLocal[(indexPath as NSIndexPath).row]
+        let studentInformation = studentInformations[(indexPath as NSIndexPath).row]
         if (studentInformation.MediaURL != "") {
             let app = UIApplication.shared
             app.open(URL(string: studentInformation.MediaURL)!, options: [:], completionHandler: { (isSuccess) in
@@ -67,12 +68,12 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentInformationsLocal.count
+        return studentInformations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let studentInformation = studentInformationsLocal[(indexPath as NSIndexPath).row]
+        let studentInformation = studentInformations[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentInformationCell", for: indexPath)
         cell.textLabel!.text = studentInformation.FirstName + " " + studentInformation.LastName
         cell.detailTextLabel!.text = studentInformation.MediaURL

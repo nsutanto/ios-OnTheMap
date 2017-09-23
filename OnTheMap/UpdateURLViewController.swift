@@ -9,10 +9,20 @@
 import UIKit
 import MapKit
 
+
+extension UpdateURLViewController: MKMapViewDelegate {
+    
+    // turn off loading indicator
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        self.loadingIndicator.stopAnimating()
+    }
+}
+
 class UpdateURLViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mediaURLText: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var location: String!
     var longitude: Double?
@@ -21,6 +31,7 @@ class UpdateURLViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         mediaURLText.delegate = OnTheMapTextFieldDelegate.sharedInstance
@@ -29,6 +40,7 @@ class UpdateURLViewController: UIViewController {
     }
     
     func updateMapView() {
+        loadingIndicator.startAnimating()
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(location) { (placeMarks, error) in
     

@@ -112,16 +112,18 @@ class LoginViewController: UIViewController {
         
         UdacityClient.sharedInstance().performUdacityLogin(email, password, completionHandlerLogin: { (error) in
             
-            if (error == nil) {
+            if let error = error {
                 
-                // Get User Info
-                self.getCurrentUserInfo()
-            
-                // Complete Login
-                self.completeLogin()
+                //self.performAlert("Invalid login or password")
+                self.performAlert(error.localizedDescription)
             }
             else {
-                self.performAlert("Invalid login or password")
+                // Get User Info
+                self.getCurrentUserInfo()
+                
+                // Complete Login
+                self.completeLogin()
+                
             }
         })
     }
