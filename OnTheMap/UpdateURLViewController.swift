@@ -12,9 +12,12 @@ import MapKit
 
 extension UpdateURLViewController: MKMapViewDelegate {
     
-    // turn off loading indicator
-    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
-        self.loadingIndicator.stopAnimating()
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        if (fullyRendered) {
+            performUIUpdatesOnMain {
+                self.loadingIndicator.stopAnimating()
+            }
+        }
     }
 }
 
