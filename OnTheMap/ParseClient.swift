@@ -92,9 +92,14 @@ class ParseClient {
                     let studentInformations = StudentInformation.StudentInformationsFromResults(results)
                     
                     // Get the first student info.. We care only about unique key anyway
-                    self.studentInfo = studentInformations[0]
-                    SharedData.sharedInstance.currentUser = self.studentInfo!
-                    completionHandlerLocation(self.studentInfo, nil)
+                    if (studentInformations.count > 0) {
+                        self.studentInfo = studentInformations[0]
+                        SharedData.sharedInstance.currentUser = self.studentInfo!
+                        completionHandlerLocation(self.studentInfo, nil)
+                    }
+                    else {
+                        // Do nothing if student location is not there yet. Anyway we can always create by performing "POST" student location
+                    }
                 } else {
                     completionHandlerLocation(nil, NSError(domain: "getStudentInformation parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))
                 }
