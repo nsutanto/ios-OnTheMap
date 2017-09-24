@@ -26,6 +26,7 @@ struct StudentInformation {
     
     // construct a TMDBMovie from a dictionary
     init?(dictionary: [String:AnyObject]) {
+        
         if let createdAt = dictionary[ParseClient.GetStudentJSONResponseKeys.CreatedAt] as? String {
             CreatedAt = createdAt
         }

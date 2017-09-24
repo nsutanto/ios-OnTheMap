@@ -311,16 +311,22 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="cuN-kR-0gW">
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ezo-vR-lvH" firstAttribute="leading" secondItem="LQD-ED-Ulp" secondAttribute="leadingMargin" id="GXu-Di-uhn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ezo-vR-lvH" secondAttribute="trailing" id="JWx-AQ-lVd"/>
+                            <constraint firstItem="cuN-kR-0gW" firstAttribute="centerX" secondItem="LQD-ED-Ulp" secondAttribute="centerX" id="PWM-72-cvq"/>
+                            <constraint firstItem="cuN-kR-0gW" firstAttribute="centerY" secondItem="LQD-ED-Ulp" secondAttribute="centerY" id="XQz-0C-gFM"/>
                             <constraint firstItem="ezo-vR-lvH" firstAttribute="centerY" secondItem="LQD-ED-Ulp" secondAttribute="centerY" id="cQO-cx-EC1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Feg-fq-81x" id="HCt-Oe-AYe"/>
+                        <outlet property="loadingIndicator" destination="cuN-kR-0gW" id="vFW-Sb-inT"/>
                         <outlet property="loginStackView" destination="ezo-vR-lvH" id="Zgh-c2-nnf"/>
                         <outlet property="passwordTextField" destination="1sZ-iQ-0i0" id="CXA-7P-Tpn"/>
                     </connections>

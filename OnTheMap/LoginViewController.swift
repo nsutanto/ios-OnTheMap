@@ -29,11 +29,17 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginStackView: UIStackView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // FB Login example : https://www.letsbuildthatapp.com/course_video?id=412
+        // Log out first in case it is logged in before
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logOut()
+
+        
         let fbLoginButton = FBSDKLoginButton()
         
         loginStackView.addArrangedSubview(fbLoginButton)
@@ -46,17 +52,20 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadingIndicator.stopAnimating()
         subscribeToKeyboardNotifications()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        loadingIndicator.stopAnimating()
         unsubscribeFromKeyboardNotifications()
     }
 
     
     private func completeLogin() {
         performUIUpdatesOnMain {
+            self.loadingIndicator.startAnimating()
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "MainNavigationController") as! UINavigationController
             self.present(controller, animated: true, completion: nil)
         }
@@ -64,6 +73,7 @@ class LoginViewController: UIViewController {
     
     func performAlert(_ messageString: String) {
         performUIUpdatesOnMain {
+            self.loadingIndicator.stopAnimating()
             // Login fail
             let alert = UIAlertController(title: "Alert", message: messageString, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -100,10 +110,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func performLogin(_ sender: Any) {
+        loadingIndicator.startAnimating()
         if (emailTextField.text! == "" || passwordTextField.text! == "") {
             let alert = UIAlertController(title: "Alert", message: "Please enter email and password.", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+            loadingIndicator.stopAnimating()
             return
         }
         

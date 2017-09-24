@@ -71,7 +71,7 @@ class UpdateURLViewController: UIViewController {
                     }
                 }
                 else if ((placeMarks?.count)! == 0) {
-                    self.alertMapError("Location is not found.")      
+                    self.alertMapError("Location is not found.")
                 }
                 else {
                     self.alertMapError("Multiple locations found.")                }
@@ -90,6 +90,7 @@ class UpdateURLViewController: UIViewController {
     
     func alertMapError(_ alertMessage: String) {
         performUIUpdatesOnMain {
+            self.loadingIndicator.stopAnimating()
             let alert = UIAlertController(title: "Alert", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)

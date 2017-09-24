@@ -8,16 +8,7 @@
 
 import UIKit
 
-class ParseClient : NSObject {
-    
-    // MARK: Initializers
-    
-    override init() {
-        super.init()
-    }
-    
-    // MARK: Properties
-    
+class ParseClient {
     // shared session
     
     var session = URLSession.shared
@@ -56,6 +47,8 @@ class ParseClient : NSObject {
                 if let results = parsedResult?[GetStudentJSONResponseKeys.StudentResult] as? [[String:AnyObject]] {
                     
                     self.studentInformations = StudentInformation.StudentInformationsFromResults(results)
+                    
+                    SharedData.sharedInstance.studentInformations = self.studentInformations!
                     completionHandlerLocations(self.studentInformations, nil)
                 } else {
                     completionHandlerLocations(nil, NSError(domain: "getStudentLocations parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))
@@ -100,7 +93,7 @@ class ParseClient : NSObject {
                     
                     // Get the first student info.. We care only about unique key anyway
                     self.studentInfo = studentInformations[0]
-                    
+                    SharedData.sharedInstance.currentUser = self.studentInfo!
                     completionHandlerLocation(self.studentInfo, nil)
                 } else {
                     completionHandlerLocation(nil, NSError(domain: "getStudentInformation parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse getStudentLocations"]))

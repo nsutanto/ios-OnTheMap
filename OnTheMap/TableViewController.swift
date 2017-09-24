@@ -11,7 +11,7 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var studentInformations = [StudentInformation]()
+    //var studentInformations = [StudentInformation]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class TableViewController: UITableViewController {
         
         ParseClient.sharedInstance().getStudentInformations(parameters: parameters as [String : AnyObject], completionHandlerLocations: { (studentInformations, error) in
             if let studentInformations = studentInformations {
-                self.studentInformations = studentInformations
+                SharedData.sharedInstance.studentInformations = studentInformations
                 self.updateTable()
             } else {
                 print(error ?? "empty error")
@@ -50,7 +50,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let studentInformation = studentInformations[(indexPath as NSIndexPath).row]
+        let studentInformation = SharedData.sharedInstance.studentInformations[(indexPath as NSIndexPath).row]
         if (studentInformation.MediaURL != "") {
             let app = UIApplication.shared
             app.open(URL(string: studentInformation.MediaURL)!, options: [:], completionHandler: { (isSuccess) in
@@ -68,12 +68,12 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentInformations.count
+        return SharedData.sharedInstance.studentInformations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let studentInformation = studentInformations[(indexPath as NSIndexPath).row]
+        let studentInformation = SharedData.sharedInstance.studentInformations[(indexPath as NSIndexPath).row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentInformationCell", for: indexPath)
         cell.textLabel!.text = studentInformation.FirstName + " " + studentInformation.LastName
         cell.detailTextLabel!.text = studentInformation.MediaURL

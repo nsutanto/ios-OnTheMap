@@ -8,15 +8,7 @@
 
 import UIKit
 
-class UdacityClient : NSObject {
-    
-    // MARK: Initializers
-    
-    override init() {
-        super.init()
-    }
-    
-    // MARK: Properties
+class UdacityClient {
     
     // shared session
 
@@ -26,7 +18,6 @@ class UdacityClient : NSObject {
     
  
     // MARK: Shared Instance
-    
     class func sharedInstance() -> UdacityClient {
         struct Singleton {
             static var sharedInstance = UdacityClient()
