@@ -39,7 +39,7 @@ extension MapViewController: MKMapViewDelegate {
                 app.open(URL(string: toOpen)!, options: [:], completionHandler: { (isSuccess) in
               
                     if (isSuccess == false) {
-                        self.performAlert()
+                        self.performAlert("Link URL is not valid. It might missing http or https.")
                     }
                 }
             )}
@@ -82,7 +82,7 @@ class MapViewController: UIViewController {
             if let studentInformations = studentInformations{
                 self.updateUIMapAnnotation(location: studentInformations)
             } else {
-                print(error ?? "empty error")
+                self.performAlert("There was an error retrieving student data")
             }
         })
     }
@@ -141,9 +141,9 @@ class MapViewController: UIViewController {
         }
     }
     
-    func performAlert() {
+    func performAlert(_ message: String) {
         performUIUpdatesOnMain {
-            let alert = UIAlertController(title: "Alert", message: "Link URL is not valid. It might missing http or https.", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }

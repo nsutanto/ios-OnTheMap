@@ -41,7 +41,7 @@ class TableViewController: UITableViewController {
                 SharedData.sharedInstance.studentInformations = studentInformations
                 self.updateTable()
             } else {
-                print(error ?? "empty error")
+                self.performAlert("There was an error retrieving student data")
             }
         })
     }
@@ -56,7 +56,7 @@ class TableViewController: UITableViewController {
             app.open(URL(string: studentInformation.MediaURL)!, options: [:], completionHandler: { (isSuccess) in
                 
                 if (isSuccess == false) {
-                    self.performAlert()
+                    self.performAlert("Link URL is not valid. It might missing http or https.")
                 }
             })
         }
@@ -81,9 +81,9 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-    func performAlert() {
+    func performAlert(_ message: String) {
         performUIUpdatesOnMain {
-            let alert = UIAlertController(title: "Alert", message: "Link URL is not valid. It might missing http or https.", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
