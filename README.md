@@ -6,7 +6,7 @@ In addition, Udacity student can also login using facebook login if their Udacit
 
 ## Login Page
 <img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300">
-<img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="300">
+<img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
 
 Short preview video of this app available on my blog : https://nsutanto.blogspot.com/p/ios-projects.html
 
