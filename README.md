@@ -5,7 +5,7 @@ This app uses a map that shows information posted by other students. The map wil
 In addition, Udacity student can also login using facebook login if their Udacity account is linked to their Facebook account.
 
 ## Login
-<img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300"><img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300"><img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
+<img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300">     <img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300"><img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
 
 ## Map View
 
