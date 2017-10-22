@@ -4,8 +4,11 @@ This app uses a map that shows information posted by other students. The map wil
 
 In addition, Udacity student can also login using facebook login if their Udacity account is linked to their Facebook account.
 
-## Login
-<img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300">     <img src="https://github.com/nsutanto/ios-OnTheMap/blob/master/Presentation/IMG_0156.PNG" width="300"><img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
+## Udacity Login
+<img src="https://media.giphy.com/media/xUNd9SIrM5Q8BcGH28/giphy.gif" width="300">
+
+## Facebook Login
+<img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
 
 ## Map View
 
@@ -16,6 +19,4 @@ In addition, Udacity student can also login using facebook login if their Udacit
 ## Create / Update Student Info
 
 ## Error Handling
-
-Short preview video of this app available on my blog : https://nsutanto.blogspot.com/p/ios-projects.html
 
