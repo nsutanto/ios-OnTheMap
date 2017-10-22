@@ -4,22 +4,24 @@ This app uses a map that shows information posted by other students. The map wil
 
 In addition, Udacity student can also login using facebook login if their Udacity account is linked to their Facebook account.
 
-## Udacity Login
+### Udacity Login
 <img src="https://media.giphy.com/media/xUNd9SIrM5Q8BcGH28/giphy.gif" width="300">
 
-## Facebook Login
+### Facebook Login
 <img src="https://media.giphy.com/media/26Ff1rvHMvHPpCqhW/giphy.gif" width="300">
 
-## Map View
+### Map View
 <img src="https://media.giphy.com/media/26FeTVev1QQDocnPa/giphy.gif" width="300">
 
-## Table View
+### Table View
 <img src="https://media.giphy.com/media/3o6nUNMumROYQWk6Xu/giphy.gif" width="300">
 
-## Create / Update Student Info
+### Create / Update Student Info
 Click image below for video:
 [![Watch the video](https://github.com/nsutanto/ios-OnTheMap/blob/master/ImageAndMedia/UpdateStudentInfo.PNG)](https://vimeo.com/239297490)
 
-## Error Handling
+### Error Handling
 <img src="https://media.giphy.com/media/26FeUz0nsDice6VwI/giphy.gif" width="300"> <img src="https://media.giphy.com/media/d47H7zkOqCBMCr3G/giphy.gif" width="300">
 
+## Website
+https://nsutanto.blogspot.com/2017/10/ios-onthemap.html
