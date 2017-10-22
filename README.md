@@ -20,4 +20,5 @@ In addition, Udacity student can also login using facebook login if their Udacit
 <img src="https://vimeo.com/239297490" width="300">
 
 ## Error Handling
+<img src="https://media.giphy.com/media/26FeUz0nsDice6VwI/giphy.gif" width="300"> <img src="https://media.giphy.com/media/d47H7zkOqCBMCr3G/giphy.gif" width="300">
 
