@@ -14,10 +14,10 @@ In addition, Udacity student can also login using facebook login if their Udacit
 <img src="https://media.giphy.com/media/26FeTVev1QQDocnPa/giphy.gif" width="300">
 
 ## Table View
-
-## Open Student URL
+<img src="https://media.giphy.com/media/3o6nUNMumROYQWk6Xu/giphy.gif" width="300">
 
 ## Create / Update Student Info
+
 
 ## Error Handling
 
