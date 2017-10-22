@@ -17,7 +17,9 @@ In addition, Udacity student can also login using facebook login if their Udacit
 <img src="https://media.giphy.com/media/3o6nUNMumROYQWk6Xu/giphy.gif" width="300">
 
 ## Create / Update Student Info
+[![Watch the video](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://vimeo.com/239297490)
 
 
 ## Error Handling
+<img src="https://media.giphy.com/media/26FeUz0nsDice6VwI/giphy.gif" width="300"> <img src="https://media.giphy.com/media/d47H7zkOqCBMCr3G/giphy.gif" width="300">
 
