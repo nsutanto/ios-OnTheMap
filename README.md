@@ -8,7 +8,7 @@ In addition, Udacity student can also login using facebook login if their Udacit
 <img src="https://media.giphy.com/media/xUNd9SIrM5Q8BcGH28/giphy.gif" width="300">
 
 ## Facebook Login
-<img src="https://media.giphy.com/media/l378gA9ZcrPUJnbTG/giphy.gif" width="600">
+<img src="https://media.giphy.com/media/26Ff1rvHMvHPpCqhW/giphy.gif" width="300">
 
 ## Map View
 
