@@ -11,6 +11,7 @@ In addition, Udacity student can also login using facebook login if their Udacit
 <img src="https://media.giphy.com/media/26Ff1rvHMvHPpCqhW/giphy.gif" width="300">
 
 ## Map View
+<img src="https://media.giphy.com/media/26FeTVev1QQDocnPa/giphy.gif" width="300">
 
 ## Table View
 
