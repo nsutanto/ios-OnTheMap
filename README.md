@@ -24,4 +24,4 @@ Click image below for video:
 <img src="https://media.giphy.com/media/26FeUz0nsDice6VwI/giphy.gif" width="300"> <img src="https://media.giphy.com/media/d47H7zkOqCBMCr3G/giphy.gif" width="300">
 
 ## Website
-https://nsutanto.blogspot.com/2017/10/ios-onthemap.html
+https://nsutanto.blogspot.com/p/onthemap.html
