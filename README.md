@@ -4,6 +4,10 @@ This app uses a map that shows information posted by other students. The map wil
 
 In addition, Udacity student can also login using facebook login if their Udacity account is linked to their Facebook account.
 
+## Requirements
+- XCode 9.2
+- Swift 4
+
 ### Udacity Login
 <img src="https://media.giphy.com/media/xUNd9SIrM5Q8BcGH28/giphy.gif" width="300">
 
